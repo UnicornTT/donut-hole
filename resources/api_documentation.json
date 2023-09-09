@@ -1,0 +1,362 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Donut Hole API",
+    "description": "Donut Hole API Documentation",
+    "contact": {
+      "email": "kirill.unicorntt@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "department",
+      "description": "Everything about departments"
+    },
+    {
+      "name": "employee",
+      "description": "Everything about employees"
+    }
+  ],
+  "paths": {
+    "/api/department": {
+      "get": {
+        "tags": [
+          "department"
+        ],
+        "summary": "Get list of departments",
+        "description": "Get list of departments",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Refers to the page of pagination",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      }
+    },
+    "/api/department/create": {
+      "post": {
+        "tags": [
+          "department"
+        ],
+        "summary": "Create department",
+        "description": "Create new department",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of the department",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "422": {
+            "description": "missing required parameter"
+          }
+        }
+      }
+    },
+    "/api/department/update/{id}": {
+      "put": {
+        "tags": [
+          "department"
+        ],
+        "summary": "Update department",
+        "description": "Update department",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the department that need to be updated",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of the department",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "422": {
+            "description": "missing required parameter"
+          }
+        }
+      }
+    },
+    "/api/department/delete/{id}": {
+      "delete": {
+        "tags": [
+          "department"
+        ],
+        "summary": "Delete department",
+        "description": "Delete department",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the department that need to be deleted",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "422": {
+            "description": "missing required parameter"
+          },
+          "451": {
+            "description": "operation cannot be carried out"
+          }
+        }
+      }
+    },
+    "/api/employee": {
+      "get": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Get list of departments",
+        "description": "Get list of departments",
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Refers to the page of pagination",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ]
+      }
+    },
+    "/api/employee/create": {
+      "post": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Create employee",
+        "description": "Create new employee",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of the employee",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "surname",
+            "in": "query",
+            "description": "Surname of the employee",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "patronymic",
+            "in": "query",
+            "description": "Patronymic of the employee",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "Gender of the employee",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "salary",
+            "in": "query",
+            "description": "Salary of the employee",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "departments[]",
+            "in": "query",
+            "description": "Array of departments to which the employee belongs",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "422": {
+            "description": "missing required parameter"
+          }
+        }
+      }
+    },
+    "/api/employee/update/{id}": {
+      "put": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Update employee",
+        "description": "Update employee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the employ that need to be updated",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of the employee",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "surname",
+            "in": "query",
+            "description": "Surname of the employee",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "patronymic",
+            "in": "query",
+            "description": "Patronymic of the employee",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "Gender of the employee",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "salary",
+            "in": "query",
+            "description": "Salary of the employee",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "departments[]",
+            "in": "query",
+            "description": "Array of departments to which the employee belongs",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "422": {
+            "description": "missing required parameter"
+          }
+        }
+      }
+    },
+    "/api/employee/delete/{id}": {
+      "delete": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Delete employee",
+        "description": "Delete employee",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the employee that need to be deleted",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "422": {
+            "description": "missing required parameter"
+          }
+        }
+      }
+    }
+  }
+}

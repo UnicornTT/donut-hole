@@ -1,3 +1,5 @@
+## Как развернуть
+
 Установите docker и docker-compose.
 
 Скопируйте .env
@@ -21,13 +23,21 @@ docker-compose up -d
 docker-compose exec db psql -U postgres -c "create database backend;"
 ```
 
-В браузере открываем http://localhost
-
-Запуск команд artisan
+Накатить миграции
 ```shell
-docker-compose exec back ash # Внутри контейнера выполняем как обычно php artisan foo:bar
-# или
-docker-compose exec back php artisan foo:bar
-# например накатить миграции
 docker-compose exec back php artisan migrate
 ```
+В браузере открываем http://localhost
+
+## О проекте
+
+Созданно 2 сущности, для каждой из которых написанны следующие роуты:
+    - department/employee - вывод объектов с пагинацией
+    - create - создание экземпляра сущности
+    - update/{id} - изменение объекта
+    - delete/{id} - удаление объекта
+
+Реализована связь между сотрудниками и отделами, при которой удален может быть только тот отдел, к которому не относится ни один сотрудник
+Все ошибки возвращаются в формате JSON
+Заросы к базе данных осуществляются посредством моделей
+Составлена документация по API и находится по роуту /api
